@@ -18,6 +18,8 @@ import time
 import warnings
 warnings.filterwarnings("ignore")
 
+
+#Treina os métodos de classificação e mede o desempenho dos mesmos sem utilizar o PCA 
 def classifica(X_train,X_test,Y_train,Y_test):
 
     start = time.time()
@@ -140,6 +142,8 @@ def classifica(X_train,X_test,Y_train,Y_test):
     end = time.time()
     print('Tempo de execução:' + str(end - start))
 
+
+#Treina os métodos de classificação e mede o desempenho dos mesmos utilizando o PCA 
 def classificaPCA(X_train,X_test,Y_train,Y_test,components):
 
     pca = PCA(n_components=components)
