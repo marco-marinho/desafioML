@@ -18,9 +18,9 @@ data = util.correctSkewness(data,['capital-gain', 'capital-loss','native-country
 
 data['marital-relation'] = data['marital-status']*data['relationship']
 
-numericos = data.select_dtypes(include=[np.number]).columns.tolist()
-numericos.remove('income')
-data[numericos] = util.normalizeData(data[numericos])
+numeric = data.select_dtypes(include=[np.number]).columns.tolist()
+numeric.remove('income')
+data[numeric] = util.normalizeData(data[numeric])
 
 #print(data.std())
 
