@@ -19,15 +19,15 @@ correlação entre as preditoras e a variável de resposta.
 
 ### Transformação de recursos enviesados:
 
-Durante a análise inicial das variaríeis identificou-se que as variáveis *capital-gain*, *capital-loss*, *native-country*, 
+Durante a análise inicial das variaríeis identificou-se que as variáveis *capital-gain*, *capital-loss*, *native-country* e 
 *race* apresentaram forte viés. Como, em geral, métodos de regressão e previsão se comportam melhor quando as variáveis preditoras
-tem distribuições mais próximas da normal, a raiz cúbica foi utilizada como método para a redução do viés. A raiz cubica foi 
+tem distribuições mais próximas da normal, a raiz cúbica foi utilizada como método para a redução do viés. A raiz cúbica foi 
 escolhida por ser suficiente para a redução do viés e por ser uma transformação menos forte que a transformação logarítmica.
 
 ### Processo de normalização dos dados:
 
 As variáveis preditoras foram normalizadas de forma a possuir média 0 e desvio padrão 1. Essa escolha deve-se novamente ao fato de
-que a maioria dos métodos de regressão possuírem desempenho melhor quando as variáveis preditoras tem distribuições próximas da
+que a maioria dos métodos de regressão possuem desempenho melhor quando as variáveis preditoras tem distribuições próximas da
 distribuição normal. A transformação foi feita subtraindo-se de cada entrada a média do conjunto e divido-a pelo desvio padrão
 do conjunto.
 
@@ -35,7 +35,7 @@ do conjunto.
 
 Os modelos de previsão utilizados no estudo foram: support vector machines (SVM), regressão linear, árvores de decisão,
 naive bayes, redes neurais, k-nearest neighbors (KNN), clustering, regressão logística, linear discriminant analysis (LDA),
-generalized regression neural networkds (GRNN) e multivariate adaptive regression splines (MARS). 
+generalized regression neural networks (GRNN) e multivariate adaptive regression splines (MARS). 
 
 A decomposição em componentes principais (PCA) também foi estudada como forma de melhorar o desempenho computacional. Utilizando
 o PCA para reduzir a dimensionalidade do problema foi possível reduzir o tempo de processamento em aproximadamente 40% com uma
@@ -43,12 +43,12 @@ redução de precisão em torno de 3%.
 
 ### Modelos supervisionados utilizados:
 
-Os seguintes modelos supervisionados foram utilizados: upport vector machines (SVM), regressão linear, árvores de decisão,
+Os seguintes modelos supervisionados foram utilizados: support vector machines (SVM), regressão linear, árvores de decisão,
 naive bayes, redes neurais, k-nearest neighbors (KNN), regressão logística, linear discriminant analysis (LDA),
-generalized regression neural networkds (GRNN) e multivariate adaptive regression splines (MARS).
+generalized regression neural networks (GRNN) e multivariate adaptive regression splines (MARS).
 
 O único modelo não supervisionado utilizado foi o modelo de clustering. Além disso, o PCA utilizado para decomposição de dados
-pode ser também considerado como não supervisionado, visto que a separação em componentes ortogonais é feita de forma cega.
+pode ser também considerado como não supervisionado visto que a separação em componentes ortogonais é feita de forma cega.
 
 ### Treino e evolução:
 
@@ -57,7 +57,7 @@ Para o treino dos classificadores foram utilizados os primeiros 20% do conjunto 
 ### Desempenho do modelo e revalidação log loss
 
 A seguir são apresentados o desempenho de todos os métodos e a revalidação log loss para os métodos que apresentam a probabilidade de classificação bem definida. Os resultados são apresentados tanto para o caso de aplicação do PCA quanto para
-o caso dos dados com a dimensionalidade original. Além disso, é a presentado o tempo de processamento total para todos os métodos utilizado ou não PCA de forma a demonstrar o ganho computacional obtido.
+o caso dos dados com a dimensionalidade original. Além disso, é apresentado o tempo de processamento total para todos os métodos utilizando ou não PCA de forma a demonstrar o ganho computacional obtido.
 
 Desempenho para dados com dimensionalidade original:
 
