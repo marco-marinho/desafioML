@@ -15,7 +15,7 @@ strings foram substituídas por variáveis numéricas. A variável de resposta f
 Os índices numéricos utilizados para a substituição foram escolhidos de acordos com a relação que as variáveis a serem 
 substituídas possuíam com a variável de resposta. Isto é, a ordem dos índices dados seguiu a ordem das variáveis que
 tivessem o maior número de variáveis de resposta iguais a 1. Com isso, buscou-se facilitar a identificação do nível de 
-correlação entre as proditoras e a variável de resposta.
+correlação entre as preditoras e a variável de resposta.
 
 ### Transformação de recursos enviesados:
 
@@ -95,6 +95,3 @@ Desempenho utilizando PCA:
 | MARS | 0.8184 | N/A |
 
 Tempo de execução:3.3925909996032715
-
-
-
