@@ -4,7 +4,6 @@ import seaborn as sbrn
 import numpy as np
 import util as util
 from sklearn.model_selection import train_test_split
-from sklearn.decomposition import PCA
 from classifiers import classifica, classificaPCA
 import warnings
 warnings.filterwarnings("ignore")
@@ -37,6 +36,8 @@ Y = data['income']
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
 classifica(X_train,X_test,Y_train,Y_test)
+
+print("  ")
 
 X = data[['marital-relation','workclass', 'occupation', 'age', 'education-num', 'hours-per-week','capital-gain', 'sex', 'native-country']]
 

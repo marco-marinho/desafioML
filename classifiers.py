@@ -6,7 +6,7 @@ import util as util
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn import linear_model, neighbors, cluster
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, log_loss
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
@@ -24,79 +24,88 @@ def classifica(X_train,X_test,Y_train,Y_test):
     classifier = SVC()
 
     classifier.fit(X_train, Y_train)
+    Y_Hat = classifier.predict(X_test)
 
-    score = classifier.score(X_test, Y_test)
+    score = log_loss(Y_test, Y_Hat)
 
     print('SVM: '+str(score))
 
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
     print('Regressao Linear: '+str(score))
 
     classifier = DecisionTreeClassifier( max_depth = 4 )
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+
+    score = log_loss(Y_test, Y_Hat)
 
     print('Arvore de Decisão: '+str(score))
 
     classifier = GaussianNB()
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+
+    score = log_loss(Y_test, Y_Hat)
 
     print('Bayes: '+str(score))
 
     classifier = MLPClassifier(hidden_layer_sizes=(25,25,25))
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+
+    score = log_loss(Y_test, Y_Hat)
 
     print('Rede Neural: '+str(score))
 
     classifier = neighbors.KNeighborsClassifier()
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
     print('KNN: '+str(score))
 
     classifier = cluster.KMeans(n_clusters=2)
     classifier.fit_transform(X_train)
-    labelspre = classifier.predict(X_test)
-    score = accuracy_score(Y_test, labelspre)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
     print('Cluster: '+str(score))
 
     classifier = linear_model.LogisticRegression()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    score = accuracy_score(Y_test, y_pre)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
     print('Regressão Logística: '+str(score))
 
     classifier = LinearDiscriminantAnalysis()
     classifier.fit(X_train, Y_train)
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
     print('LDA: '+str(score))
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
     print('GRNN: '+str(score))
 
     classifier = Earth()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
     print('MARS: '+str(score))
     end = time.time()
@@ -107,84 +116,94 @@ def classificaPCA(X_train,X_test,Y_train,Y_test,components):
     pca = PCA(n_components=components)
     X_train = pca.fit_transform(X_train)
     X_test = pca.fit_transform(X_test)
+    
     start = time.time()
     classifier = SVC()
 
     classifier.fit(X_train, Y_train)
+    Y_Hat = classifier.predict(X_test)
 
-    score = classifier.score(X_test, Y_test)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('SVM+PCA: '+str(score))
+    print('SVM: '+str(score))
 
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('Regressao Linear+PCA: '+str(score))
+    print('Regressao Linear: '+str(score))
 
     classifier = DecisionTreeClassifier( max_depth = 4 )
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
 
-    print('Arvore de Decisão+PCA: '+str(score))
+    score = log_loss(Y_test, Y_Hat)
+
+    print('Arvore de Decisão: '+str(score))
 
     classifier = GaussianNB()
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
 
-    print('Bayes+PCA: '+str(score))
+    score = log_loss(Y_test, Y_Hat)
+
+    print('Bayes: '+str(score))
 
     classifier = MLPClassifier(hidden_layer_sizes=(25,25,25))
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
 
-    print('Rede Neural+PCA: '+str(score))
+    score = log_loss(Y_test, Y_Hat)
+
+    print('Rede Neural: '+str(score))
 
     classifier = neighbors.KNeighborsClassifier()
 
     classifier.fit( X_train, Y_train )
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('KNN+PCA: '+str(score))
+    print('KNN: '+str(score))
 
     classifier = cluster.KMeans(n_clusters=2)
     classifier.fit_transform(X_train)
-    labelspre = classifier.predict(X_test)
-    score = accuracy_score(Y_test, labelspre)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('Cluster+PCA: '+str(score))
+    print('Cluster: '+str(score))
 
     classifier = linear_model.LogisticRegression()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    score = accuracy_score(Y_test, y_pre)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('Regressão Logística+PCA: '+str(score))
+    print('Regressão Logística: '+str(score))
 
     classifier = LinearDiscriminantAnalysis()
     classifier.fit(X_train, Y_train)
-    score = classifier.score(X_test, Y_test)
+    Y_Hat = classifier.predict(X_test)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('LDA+PCA: '+str(score))
+    print('LDA: '+str(score))
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('GRNN+PCA: '+str(score))
+    print('GRNN: '+str(score))
 
     classifier = Earth()
     classifier.fit(X_train, Y_train)
-    y_pre = classifier.predict(X_test)
-    ypre = np.around(y_pre)
-    score = accuracy_score(Y_test, ypre)
+    Y_Hat = classifier.predict(X_test)
+    Y_Hat = np.around(Y_Hat)
+    score = log_loss(Y_test, Y_Hat)
 
-    print('MARS+PCA: '+str(score))
+    print('MARS: '+str(score))
     end = time.time()
     print('Tempo de execução:' + str(end - start))
