@@ -28,7 +28,7 @@ escolhida por ser suficiente para a redução do viés e por ser uma transforma�
 
 As variáveis preditoras foram normalizadas de forma a possuir média 0 e desvio padrão 1. Essa escolha deve-se novamente ao fato de
 que a maioria dos métodos de regressão possuem desempenho melhor quando as variáveis preditoras tem distribuições próximas da
-distribuição normal. A transformação foi feita subtraindo-se de cada entrada a média do conjunto e divido-a pelo desvio padrão
+distribuição normal. A transformação foi feita subtraindo-se de cada entrada a média do conjunto e dividindo-a pelo desvio padrão
 do conjunto.
 
 ### Modelos de previsão e desempenho:
