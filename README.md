@@ -38,8 +38,8 @@ naive bayes, redes neurais, k-nearest neighbors (KNN), clustering, regressão lo
 generalized regression neural networkds (GRNN) e multivariate adaptive regression splines (MARS). 
 
 A decomposição em componentes principais (PCA) também foi estudada como forma de melhorar o desempenho computacional. Utilizando
-o PCA para reduzir a dimensionalidade do problema foi possível reduzir o tempo de processamento em aproximadamente 50% com uma
-redução de precisão de aproximadamente 5%.
+o PCA para reduzir a dimensionalidade do problema foi possível reduzir o tempo de processamento em aproximadamente 40% com uma
+redução de precisão em torno de 3%.
 
 ### Modelos supervisionados utilizados:
 
@@ -52,6 +52,49 @@ pode ser também considerado como não supervisionado, visto que a separação e
 
 ### Treino e evolução:
 
-Para o treino dos classificadores foram utilizados os primeiros 20% do conjunto de dados.
+Para o treino dos classificadores foram utilizados os primeiros 20% do conjunto de dados. Os 80% restantes foram utilizados para a validação dos classificadores.
+
+### Desempenho do modelo e revalidação log loss
+
+A seguir são apresentados o desepenho de todos os métodos e a revalidação log loss para os métodos que apresentam a probabilidade de classificação bem definida. Os resultados são apresentados tanto para o caso de aplicação do PCA quanto para
+o caso dos dados com a dimensionalidade original. Além disso, é a presentado o tempo de processamento total para todos os métodos utilizado ou não PCA de forma a demonstrar o ganho computacional obtido.
+
+Desempenho para dados com dimensionalidade original:
+
+| Método        | Desempenho           | Logloss  |
+| ------------- |:-------------:| -----:|
+| SVM   | 0.8582 | 0.3451 |
+| Regressão Linear | 0.8455 | N/A |
+| Árvore de decisão | 0.8302  | 0.3571 |
+| Bayes | 0.8094 | 0.6151 |
+| Rede Neural | 0.8473 | 0.3199 |
+| KNN | 0.8356 | 1.148 |
+| Cluster | 0.6658 | N/A |
+| Regressão Logística | 0.8455 | 0.3287 |
+| LDA | 0.8464 | 0.3343 |
+| GRNN | 0.8546 | N/A |
+| MARS | 0.8464 | N/A |
+
+Tempo de execução:5.363988637924194
+
+
+Desempenho utilizando PCA:
+
+| Método        | Desempenho           | Logloss  |
+| ------------- |:-------------:| -----:|
+| SVM   | 0.8410 | 0.4017 |
+| Regressão Linear | 0.8302 | N/A |
+| Árvore de decisão | 0.8302  | 0.4306 |
+| Bayes | 0.8283 | 0.3670 |
+| Rede Neural | 0.8365 | 0.3497 |
+| KNN | 0.8202 | 1.14845 |
+| Cluster | 0.6811 | N/A |
+| Regressão Logística | 0.8229 | 0.3630 |
+| LDA | 0.8293 | 0.3634 |
+| GRNN | 0.8428 | N/A |
+| MARS | 0.8184 | N/A |
+
+Tempo de execução:3.3925909996032715
+
 
 
