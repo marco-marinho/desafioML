@@ -75,7 +75,7 @@ Desempenho para dados com dimensionalidade original:
 | GRNN | 85.46% | N/A |
 | MARS | 84.64% | N/A |
 
-Tempo de execução:5.363988637924194
+Tempo de execução: 5.36 segundos
 
 
 Desempenho utilizando PCA:
@@ -94,4 +94,4 @@ Desempenho utilizando PCA:
 | GRNN | 84.28% | N/A |
 | MARS | 81.84% | N/A |
 
-Tempo de execução:3.3925909996032715
+Tempo de execução: 3.39 segundos
