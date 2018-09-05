@@ -5,8 +5,6 @@ import numpy as np
 import util as util
 from sklearn.model_selection import train_test_split
 from classifiers import classifica, classificaPCA
-import warnings
-#warnings.filterwarnings("ignore")
 
 data = pan.read_csv('data.csv')
 
@@ -20,7 +18,7 @@ data = util.cast_to_numeric(data)
 data = util.correct_skewness(data, ['capital-gain', 'capital-loss', 'native-country', 'race'])
 
 # Transforma variaveis correlacionadas em uma só
-data['marital-relation'] = data['marital-status']*data['relationship']
+data['marital-relation'] = data['marital-status'] * data['relationship']
 
 # Seleciona quais são os campos numéricos, remove o campo income e normaliza os dados
 numeric = data.select_dtypes(include=[np.number]).columns.tolist()
@@ -40,10 +38,13 @@ Y = data['income']
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
+print('Desempenho sem PCA:')
+
 # Treina e testa a performance dos métodos sem usar o PCA
 classifica(X_train, X_test, Y_train, Y_test)
 
-print("  ")
+print(' ')
+print('Desempenho com PCA:')
 
 # Treina e testa a performance dos métodos usando o PCA
 classificaPCA(X_train, X_test, Y_train, Y_test, 2)

@@ -1,22 +1,25 @@
 import numpy as np
 
+
 # Define os indices de substituição numéricos com base na média
 # do parametro referencia para cada um, facilitando a identificação
 # da correlação entre o indice e a referência.
 def remap_dict(data, target, reference):
     ordered_data = data.groupby(target)[reference].mean().sort_values(ascending=True)
-    dictRemap={}
-    index=0
+    dictRemap = {}
+    index = 0
     for aux in ordered_data.to_dict():
         dictRemap[aux] = index
-        index = index+1
+        index = index + 1
     return dictRemap
+
 
 # Normaliza os dados para média zero e desvio padrão 1
 def normalize_data(data):
     for column in data:
-        data[column]=(data[column]-data[column].mean())/data[column].std()
+        data[column] = (data[column] - data[column].mean()) / data[column].std()
     return data
+
 
 # Limpa os dados e aplica os indices calculados com getOrderedRemapDict()
 def cast_to_numeric(data):
@@ -34,6 +37,7 @@ def cast_to_numeric(data):
     data['race'] = data['race'].map(remap_dict(data, 'race', 'income')).astype(int)
     data['marital-status'] = data['marital-status'].map(remap_dict(data, 'marital-status', 'income')).astype(int)
     return data
+
 
 # Corrige o skew das colunas de dados selecionadas usando a raiz cubica.
 def correct_skewness(data, columns):
