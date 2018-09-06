@@ -6,12 +6,12 @@ import numpy as np
 # da correlação entre o indice e a referência.
 def remap_dict(data, target, reference):
     ordered_data = data.groupby(target)[reference].mean().sort_values(ascending=True)
-    dictRemap = {}
+    dict_remap = {}
     index = 0
     for aux in ordered_data.to_dict():
-        dictRemap[aux] = index
+        dict_remap[aux] = index
         index = index + 1
-    return dictRemap
+    return dict_remap
 
 
 # Normaliza os dados para média zero e desvio padrão 1
@@ -45,6 +45,7 @@ def correct_skewness(data, columns):
         data[column] = np.cbrt(data[column])
     return data
 
+
 def get_probability_round_aproximation(data):
     result = []
     for prediction in data:
@@ -53,6 +54,7 @@ def get_probability_round_aproximation(data):
         prob_one = abs(prediction - 1) / total_dist
         result.append([prob_one, prob_zero])
     return result
+
 
 def squeeze_inner(data):
     result = []

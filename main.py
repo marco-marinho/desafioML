@@ -1,10 +1,12 @@
 import pandas as pan
-import matplotlib.pyplot as pyplt
-import seaborn as sbrn
 import numpy as np
 import util as util
+import seaborn as sbrn
+import matplotlib.pyplot as pyplt
 from sklearn.model_selection import train_test_split
 from classifiers import classifica, classificaPCA
+
+pan.options.mode.chained_assignment = None
 
 data = pan.read_csv('data.csv')
 
@@ -26,10 +28,10 @@ numeric.remove('income')
 data[numeric] = util.normalize_data(data[numeric])
 
 # Plota a matriz de correlação para facilitar a análise dos dados
-# corrmat = data.corr()
-# f, ax = pyplt.subplots(figsize=(12, 9))
-# sbrn.heatmap(corrmat, annot=True, vmax=.8, square=True, cmap="RdBu_r")
-# pyplt.show()
+corrmat = data.corr()
+f, ax = pyplt.subplots(figsize=(12, 9))
+sbrn.heatmap(corrmat, annot=True, vmax=.8, square=True, cmap="RdBu_r")
+pyplt.show()
 
 # Separa os dados em um conjunto de testes e um de treino
 X = data[['marital-relation', 'workclass', 'occupation', 'age', 'education-num', 'hours-per-week', 'capital-gain',
