@@ -26,10 +26,10 @@ numeric.remove('income')
 data[numeric] = util.normalize_data(data[numeric])
 
 # Plota a matriz de correlação para facilitar a análise dos dados
-corrmat = data.corr()
-f, ax = pyplt.subplots(figsize=(12, 9))
-sbrn.heatmap(corrmat, annot=True, vmax=.8, square=True, cmap="RdBu_r")
-pyplt.show()
+# corrmat = data.corr()
+# f, ax = pyplt.subplots(figsize=(12, 9))
+# sbrn.heatmap(corrmat, annot=True, vmax=.8, square=True, cmap="RdBu_r")
+# pyplt.show()
 
 # Separa os dados em um conjunto de testes e um de treino
 X = data[['marital-relation', 'workclass', 'occupation', 'age', 'education-num', 'hours-per-week', 'capital-gain',

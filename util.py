@@ -44,3 +44,18 @@ def correct_skewness(data, columns):
     for column in columns:
         data[column] = np.cbrt(data[column])
     return data
+
+def get_probability_round_aproximation(data):
+    result = []
+    for prediction in data:
+        total_dist = abs(prediction - 0)+abs(prediction - 1)
+        prob_zero = abs(prediction - 0) / total_dist
+        prob_one = abs(prediction - 1) / total_dist
+        result.append([prob_one, prob_zero])
+    return result
+
+def squeeze_inner(data):
+    result = []
+    for entry in data:
+        result.extend(entry)
+    return result

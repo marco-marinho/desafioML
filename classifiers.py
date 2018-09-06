@@ -12,6 +12,7 @@ from neupy import algorithms
 from pyearth import Earth
 import time
 import warnings
+import util as utl
 
 warnings.filterwarnings("ignore")
 
@@ -39,13 +40,15 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('Regressao Linear: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
@@ -166,13 +169,18 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    Y_Hat = utl.squeeze_inner(Y_Hat)
+
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
+
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('GRNN: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
@@ -180,13 +188,17 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = Earth()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    #Y_Hat = utl.squeeze_inner(Y_Hat)
+    #print(Y_Hat)
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('MARS: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
@@ -230,13 +242,15 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('Regressao Linear: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
@@ -357,13 +371,18 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    Y_Hat = utl.squeeze_inner(Y_Hat)
+
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
+
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('GRNN: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
@@ -371,13 +390,17 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = Earth()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    #Y_Hat = utl.squeeze_inner(Y_Hat)
+    #print(Y_Hat)
+    Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
+    loss = log_loss(Y_test, Y_Hat_prob)
 
     end = time.time()
 
     print('MARS: ')
-    print('Precisão: ' + str(round(score, 4)))
+    print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
 
     start = time.time()
