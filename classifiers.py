@@ -24,13 +24,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
-
     print('SVM: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
@@ -40,12 +38,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Regressao Linear: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -57,12 +54,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Árvore de Decisão: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -74,12 +70,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Bayes: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -91,12 +86,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Rede Neural: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -108,12 +102,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('KNN: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -124,9 +117,8 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = cluster.KMeans(n_clusters=2)
     classifier.fit_transform(X_train)
     Y_Hat = classifier.predict(X_test)
-    score = accuracy_score(Y_test, Y_Hat)
-
     end = time.time()
+    score = accuracy_score(Y_test, Y_Hat)
 
     print('Cluster: ')
     print('Precisão: ' + str(round(score, 4)))
@@ -137,12 +129,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = linear_model.LogisticRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Regressão Logística: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -153,12 +144,11 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = LinearDiscriminantAnalysis()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('LDA: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -169,6 +159,7 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat = utl.squeeze_inner(Y_Hat)
 
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
@@ -176,8 +167,6 @@ def classifica(X_train, X_test, Y_train, Y_test):
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('GRNN: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -188,8 +177,7 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = Earth()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
-    #Y_Hat = utl.squeeze_inner(Y_Hat)
-    #print(Y_Hat)
+    end = time.time()
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
@@ -206,9 +194,8 @@ def classifica(X_train, X_test, Y_train, Y_test):
     classifier = DBSCAN()
     classifier.fit(X_train)
     Y_Hat = classifier.fit_predict(X_test)
-    score = accuracy_score(Y_test, Y_Hat)
-
     end = time.time()
+    score = accuracy_score(Y_test, Y_Hat)
 
     print('DBSCAN: ')
     print('Precisão: ' + str(round(score, 4)))
@@ -226,13 +213,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
-
     print('SVM: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
     print('Tempo de execução:' + str(end - start))
@@ -242,12 +227,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = linear_model.LinearRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Regressao Linear: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -259,12 +243,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Árvore de Decisão: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -276,12 +259,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Bayes: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -293,12 +275,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Rede Neural: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -310,12 +291,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
 
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('KNN: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -326,9 +306,8 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = cluster.KMeans(n_clusters=2)
     classifier.fit_transform(X_train)
     Y_Hat = classifier.predict(X_test)
-    score = accuracy_score(Y_test, Y_Hat)
-
     end = time.time()
+    score = accuracy_score(Y_test, Y_Hat)
 
     print('Cluster: ')
     print('Precisão: ' + str(round(score, 4)))
@@ -339,12 +318,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = linear_model.LogisticRegression()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('Regressão Logística: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -355,12 +333,11 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = LinearDiscriminantAnalysis()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat_prob = classifier.predict_proba(X_test)
 
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('LDA: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -371,6 +348,7 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = algorithms.GRNN(std=1, verbose=False)
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
+    end = time.time()
     Y_Hat = utl.squeeze_inner(Y_Hat)
 
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
@@ -378,8 +356,6 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
     loss = log_loss(Y_test, Y_Hat_prob)
-
-    end = time.time()
 
     print('GRNN: ')
     print('Precisão: ' + str(round(score, 4)) + ' Logloss: ' + str(round(loss, 4)))
@@ -390,8 +366,7 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = Earth()
     classifier.fit(X_train, Y_train)
     Y_Hat = classifier.predict(X_test)
-    #Y_Hat = utl.squeeze_inner(Y_Hat)
-    #print(Y_Hat)
+    end = time.time()
     Y_Hat_prob = utl.get_probability_round_aproximation(Y_Hat)
     Y_Hat = np.around(Y_Hat)
     score = accuracy_score(Y_test, Y_Hat)
@@ -408,9 +383,8 @@ def classificaPCA(X_train, X_test, Y_train, Y_test, components):
     classifier = DBSCAN()
     classifier.fit(X_train)
     Y_Hat = classifier.fit_predict(X_test)
-    score = accuracy_score(Y_test, Y_Hat)
-
     end = time.time()
+    score = accuracy_score(Y_test, Y_Hat)
 
     print('DBSCAN: ')
     print('Precisão: ' + str(round(score, 4)))

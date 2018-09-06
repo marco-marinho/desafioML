@@ -61,37 +61,34 @@ o caso dos dados com a dimensionalidade original. Além disso, é apresentado o 
 
 Desempenho para dados com dimensionalidade original:
 
-| Método        | Desempenho           | Logloss  |
-| ------------- |:-------------:| -----:|
-| SVM   | 85.82% | 0.3451 |
-| Regressão Linear | 84.55% | N/A |
-| Árvore de decisão | 83.02%  | 0.3571 |
-| Bayes | 80.94% | 0.6151 |
-| Rede Neural | 84.73% | 0.3199 |
-| KNN | 83.56% | 1.148 |
-| Cluster | 66.58% | N/A |
-| Regressão Logística | 84.55% | 0.3287 |
-| LDA | 84.64% | 0.3343 |
-| GRNN | 85.46% | N/A |
-| MARS | 84.64% | N/A |
-
-Tempo de execução: 5.36 segundos
-
+| Método        | Desempenho           | Logloss  | Tempo de execução|
+| ------------- |:-------------:|:-----:| ---------:|
+| SVM   | 85.91% | 0.3422 |  2.66152 s  |
+| Regressão Linear | 85.37% | 0.3643 | 0.00187 s|
+| Árvore de decisão | 83.02%  | 0.3563 | 0.00548 s|
+| Bayes | 82.11% | 0.7128 | 0.00231 s|
+| Rede Neural | 84.55% | 0.3281 | 2.21614 s|
+| KNN | 82.75% | 1.118 | 0.12013 s |
+| Cluster | 66.58% | N/A | 0.12633 s|
+| Regressão Logística | 85.00% | 0.3247 | 0.01146 s|
+| LDA | 84.82% | 0.3298 | 0.00926 s|
+| GRNN | 85.46% | 0.3309 | 0.40414 s |
+| MARS | 85.37% | 0.3640 | 0.19407 s |
+| DBSCAN | 2.08% | N/A | 0.44142 s|
 
 Desempenho utilizando PCA:
 
-| Método        | Desempenho           | Logloss  |
-| ------------- |:-------------:| -----:|
-| SVM   | 84.10% | 0.4017 |
-| Regressão Linear | 83.02% | N/A |
-| Árvore de decisão | 83.02%  | 0.4306 |
-| Bayes | 82.83% | 0.3670 |
-| Rede Neural | 83.65% | 0.3497 |
-| KNN | 82.02% | 1.14845 |
-| Cluster | 68.11% | N/A |
-| Regressão Logística | 82.29% | 0.3630 |
-| LDA | 82.93% | 0.3634 |
-| GRNN | 84.28% | N/A |
-| MARS | 81.84% | N/A |
-
-Tempo de execução: 3.39 segundos
+| Método        | Desempenho           | Logloss  | Tempo de execução|
+| ------------- |:-------------:|:-----:| ---------:|
+| SVM   | 84.37% | 0.3999 |  2.33524 s  |
+| Regressão Linear | 82.93% | 0.3865 | 0.00093 s|
+| Árvore de decisão | 81.93%  | 0.3589 | 0.00509 s|
+| Bayes | 83.02% | 0.3644 | 0.00155 s|
+| Rede Neural | 83.92% | 0.3505 | 0.32451 s|
+| KNN | 81.84% | 1.5664 | 0.00695 s |
+| Cluster | 68.38% | N/A | 0.07054 s|
+| Regressão Logística | 83.11% | 0.3613 | 0.00698 s|
+| LDA | 83.38% | 0.3615 | 0.00268 s|
+| GRNN | 84.01% | 0.3534 | 0.23445 s |
+| MARS | 83.20% | 0.3579 | 0.08382 s |
+| DBSCAN | 74.80% | N/A | 0.10417 s|
